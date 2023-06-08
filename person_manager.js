@@ -1,5 +1,7 @@
 const dbConnection = require('./db_connection');
 
+
+//Crear una persona en la tabla person
 function createPerson(name) {
   return new Promise((resolve, reject) => {
     const query = 'INSERT INTO person (name) VALUES (?)';
@@ -13,6 +15,7 @@ function createPerson(name) {
   });
 }
 
+//Traer todas las personas de la tabla person
 function getAllPersons() {
   return new Promise((resolve, reject) => {
     const query = 'SELECT * FROM person';
@@ -26,6 +29,7 @@ function getAllPersons() {
   });
 }
 
+//Traer una persona usando su id 
 function getPerson(personId) {
   return new Promise((resolve, reject) => {
     const query = 'SELECT * FROM person WHERE id = ?';
@@ -39,6 +43,8 @@ function getPerson(personId) {
   });
 }
 
+
+//Actualizar los datos de una persona usando su id 
 function updatePerson(personId, name) {
   return new Promise((resolve, reject) => {
     const query = 'UPDATE person SET name = ? WHERE id = ?';
@@ -52,6 +58,8 @@ function updatePerson(personId, name) {
   });
 }
 
+
+//Borrar el registro completo de una persona usando su id correspondiente
 function deletePerson(personId) {
   return new Promise((resolve, reject) => {
     const query = 'DELETE FROM person WHERE id = ?';
@@ -65,4 +73,5 @@ function deletePerson(personId) {
   });
 }
 
+//exportar los métodos para que sean usados en otro archivos de la API
 module.exports = { createPerson, getAllPersons, getPerson, updatePerson, deletePerson };
